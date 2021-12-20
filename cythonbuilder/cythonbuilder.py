@@ -187,7 +187,7 @@ def clean(keep_c_files:bool=False, keep_annotation_files:bool=True, debugmode:bo
 
     all_c_files = [y for x in os.walk(DirConfig.pyx) for y in glob(os.path.join(x[0], '*.c'))]
     all_html_files = [y for x in os.walk(DirConfig.pyx) for y in glob(os.path.join(x[0], '*.html'))]
-    all_built_files = [p for p in os.listdir(DirConfig.root) if ('.pyd' in p or '.os' in p)]
+    all_built_files = [p for p in os.listdir(DirConfig.root) if ('.pyd' in p or '.so' in p)]
 
 
     # 1. delete intermediate C files.

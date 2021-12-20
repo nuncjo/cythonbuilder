@@ -4,13 +4,13 @@ CythonBuilder; automated compiling and packaging of Cython code
 
 [comment]: <> ([![Implementation]&#40;https://img.shields.io/pypi/implementation/cythonbuilder&#41;]&#40;https://cython.org/&#41;)
 [comment]: <> ([![Source]&#40;https://img.shields.io/pypi/format/cythonbuilder&#41;]&#40;https://pypi.org/project/cythonbuilder&#41;)
-[![PythonVersion](https://img.shields.io/pypi/pyversions/cythonbuilder)]()
 [![Version](https://img.shields.io/pypi/v/cythonbuilder)](https://pypi.org/project/cythonbuilder/)
 [![PyPiStatus](https://img.shields.io/pypi/status/cythonbuilder)](https://pypi.org/project/cythonbuilder/)
-![PyPI - License](https://img.shields.io/pypi/l/cythonbuilder)  
-![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/pypi/cythonbuilder)
+[![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/pypi/cythonbuilder)](https://pypi.org/project/cythonbuilder)
 [![Downloads Badge](https://img.shields.io/pypi/dm/cythonbuilder)](https://pypi.org/project/cythonbuilder/)
-
+[![PythonVersion](https://img.shields.io/pypi/pyversions/cythonbuilder)](https://pypi.org/project/cythonbuilder)
+[![d](https://img.shields.io/badge/os-windows%20%7C%20linux-blue)](https://img.shields.io/badge/os-windows%20%7C%20linux-green)
+![PyPI - License](https://img.shields.io/pypi/l/cythonbuilder)  
 ![Twitter Follow](https://img.shields.io/twitter/follow/mike_huls?style=social)
 ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fmike-huls%2Fcythonbuilder)
 
