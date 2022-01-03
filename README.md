@@ -23,7 +23,7 @@ CythonBuilder; automated compiling and packaging of Cython code
                 <img alt="License" src="https://img.shields.io/pypi/l/cythonbuilder">
             </a>
             <a href="https://cython.org/">
-                <img alt="implementation" src="https://img.shields.io/pypi/implementation/cythonbuilder"
+                <img alt="implementation" src="https://img.shields.io/pypi/implementation/cythonbuilder">
             </a>
         </td>
     </tr>
@@ -34,7 +34,7 @@ CythonBuilder; automated compiling and packaging of Cython code
                 <img alt="status" src="https://img.shields.io/pypi/status/cythonbuilder">
             </a>
             <a href="https://pypi.org/project/cythonbuilder">
-                <img alt="DependencyStatus" src="https://img.shields.io/librariesio/release/pypi/cythonbuilder")
+                <img alt="DependencyStatus" src="https://img.shields.io/librariesio/release/pypi/cythonbuilder">
             </a>
         </td>
     </tr>
@@ -50,10 +50,10 @@ CythonBuilder; automated compiling and packaging of Cython code
         <th>Social</th>
         <td>
             <a href="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fmike-huls%2Fcythonbuilder">
-                <img alt="tweet" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fmike-huls%2Fcythonbuilder"
+                <img alt="tweet" src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fmike-huls%2Fcythonbuilder">
             </a>
             <a href="https://img.shields.io/twitter/follow/mike_huls?style=social">
-                <img alt=""twitterfollow" src="https://img.shields.io/twitter/follow/mike_huls?style=social"
+                <img alt="twitterfollow" src="https://img.shields.io/twitter/follow/mike_huls?style=social">
             </a>
         </td>
     </tr>
@@ -61,7 +61,6 @@ CythonBuilder; automated compiling and packaging of Cython code
 
 
 ## Installation
-
 ```commandline
 pip install cythonbuilder
 ```
