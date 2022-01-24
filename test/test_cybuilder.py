@@ -251,10 +251,7 @@ def filefinder(directory:str, pattern:str):
     found_files = glob.glob(os.path.join(directory, pattern))
     if (len(found_files) > 1):
         raise ValueError("Found more than 1 file that adheres to the provided pattern")
-    if (len(found_files) == 0):
-        return None
-    else:
-        return found_files[0]
+    return None if (len(found_files) == 0) else found_files[0]
 def clean_test_folder():
     """ removes ext dir and pyd files frm the test folder """
     try:

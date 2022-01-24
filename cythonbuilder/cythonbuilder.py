@@ -86,7 +86,7 @@ def just_build(include_annotation:bool=True, numpy_required:bool=True, targetfil
         logger.setLevel(logging.DEBUG)
 
     # Parse arguments
-    if (targetfilenames == None):
+    if targetfilenames is None:
         targetfilenames = []
 
 
@@ -100,9 +100,11 @@ def just_build(include_annotation:bool=True, numpy_required:bool=True, targetfil
     if (len(targetfilenames) > 0):
         logger.debug(f'Target filenames: {targetfilenames})')
 
-        # Check if all provided file names exist
-        missing_pyx_filepaths = [p for p in targetfilenames if f"{p}.pyx" not in target_pyx_filenames]
-        if (len(missing_pyx_filepaths) > 0):
+        if missing_pyx_filepaths := [
+            p
+            for p in targetfilenames
+            if f"{p}.pyx" not in target_pyx_filenames
+        ]:
             logger.error('Could not find these files:')
             for f in missing_pyx_filepaths:
                 logger.error(f'\t{f}')
@@ -116,14 +118,14 @@ def just_build(include_annotation:bool=True, numpy_required:bool=True, targetfil
 
 
     # NO pyx files found
-    if (len(target_pyx_filepaths) == 0):
+    if not target_pyx_filepaths:
         logger.error('No pyx files found to compile')
         sys.exit(1)
 
 
 
     # START SETUP
-    logger.debug(msg=f"Start setup")
+    logger.debug(msg='Start setup')
     sys.argv = [sys.argv[0], 'build_ext', '--inplace']
     from setuptools import setup, Extension
     from Cython.Distutils import build_ext
@@ -135,7 +137,7 @@ def just_build(include_annotation:bool=True, numpy_required:bool=True, targetfil
     Cython.Compiler.Options.annotate = include_annotation
 
     # Create module objects
-    logger.debug(msg=f"Creating module objects")
+    logger.debug(msg='Creating module objects')
     ext_modules = []
     for n in target_pyx_filepaths:
         module_name, extension = os.path.splitext(os.path.basename(n))
@@ -149,7 +151,7 @@ def just_build(include_annotation:bool=True, numpy_required:bool=True, targetfil
     logger.debug(msg=f"Included {len(ext_modules)} modules")
 
     # Extra include folders. Mainly for numpy.
-    logger.debug(msg=f"Including directories")
+    logger.debug(msg='Including directories')
     include_dirs = []
     if (numpy_required):
         try:
@@ -165,7 +167,7 @@ def just_build(include_annotation:bool=True, numpy_required:bool=True, targetfil
     logger.debug(msg=f"Included {len(include_dirs)} dirs: {include_dirs}")
 
 
-    logger.debug(msg=f"Starting setup")
+    logger.debug(msg='Starting setup')
     setup(
         cmdclass={'build_ext': build_ext},
         include_dirs=include_dirs,
@@ -183,7 +185,7 @@ def clean(keep_c_files:bool=False, keep_annotation_files:bool=True, debugmode:bo
     if (debugmode):
         logger.setLevel(logging.DEBUG)
 
-    logger.debug(msg=f"Starting cleanup")
+    logger.debug(msg='Starting cleanup')
 
     all_c_files = [y for x in os.walk(DirConfig.pyx) for y in glob(os.path.join(x[0], '*.c'))]
     all_html_files = [y for x in os.walk(DirConfig.pyx) for y in glob(os.path.join(x[0], '*.html'))]
@@ -222,8 +224,8 @@ def clean(keep_c_files:bool=False, keep_annotation_files:bool=True, debugmode:bo
         shutil.rmtree(DirConfig.build)
     except Exception as e:
         logger.debug("Cleanup: build folder cannot be located")
-    logger.debug(msg=f"Clean up process completed")
-    logger.info(msg=f"Clean-up process completed")
+    logger.debug(msg='Clean up process completed')
+    logger.info(msg='Clean-up process completed')
 
 def test(_args):
     logger.setLevel(logging.DEBUG)
@@ -251,12 +253,12 @@ def main():
         init()
     elif (command in  ['--help', 'h', 'help']):
         help()
-    elif (command == 'build'):
+    elif command == 'build':
         # Parse args
-        include_annotation = False if ('--no-annotation' in _args) else True    # default True
-        numpy_required = False if ('--no-numpy-required' in _args) else True    # default True
-        keep_c_files = True if ('--keep-c-files' in _args) else False           # default False
-        keep_annotations = False if ('--no-annotations' in _args) else True         # default False
+        include_annotation = '--no-annotation' not in _args
+        numpy_required = '--no-numpy-required' not in _args
+        keep_c_files = '--keep-c-files' in _args
+        keep_annotations = '--no-annotations' not in _args
 
         # Clean up _args
         targetfilenames = [a for a in _args if a[:2] != '--']
@@ -275,9 +277,9 @@ def main():
                 keep_c_files=keep_c_files,
                 keep_annotation_files=keep_annotations
             )
-    elif (command == 'clean'):
-        keep_c_files = True if ('--keep-c-files' in _args) else False           # default False
-        keep_annotations = False if ('--no-annotations' in _args) else True         # default False
+    elif command == 'clean':
+        keep_c_files = '--keep-c-files' in _args
+        keep_annotations = '--no-annotations' not in _args
         clean(keep_c_files=keep_c_files, keep_annotation_files=keep_annotations)
     elif (command == 'test'):
         test(_args)
